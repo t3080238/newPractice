@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>week3</title>
+        <script type="text/javascript">
+            var cvs,ctx;
+            var GRAVITY=0.5;
+            var ENERGY_LOSS=0.7;
+            var lastPosX=50, lastPosY=50;
+            var posX=50, posY=50;
+            var movX=1, movY=1;
+            var img=new Image();
+            var speedX=0;
+            var speedY=0;
+            var isMouseDown=0;
+            var openAlert=false;
+            window.onload=function(){
+                cvs=document.getElementById("cvs");
+
+                ctx=cvs.getContext("2d");
+                cvs.addEventListener("mousedown", mouseDown);
+                cvs.addEventListener("mouseup", mouseUp);
+                cvs.addEventListener("mousemove", mouseMove);
+                cvs.addEventListener("mouseout", mouseOut);
+
+
+                img.src="ball.png";
+                img.onload=function(){ //註冊load事件，圖片載入完成才做繪製
+                    drawBall();
+                    setInterval(update, 1000/60);
+                };
+            }
+
+            function drawBall(){
+                //ctx.drawImage(img, posX, posY, 100, 100);
+                ctx.fillStyle="red"
+                ctx.beginPath();
+                ctx.arc(posX,posY,/*cvs.width, cvs.height,*/ 50, 0, Math.PI*2, true);
+                ctx.fill();
+            }
+
+            function ballDrop(){                
+                if(isMouseDown==0){ //滑鼠放開的時候掉落
+                    posX+=speedX;
+                    posY+=speedY;
+                    speedX*=0.988;
+
+                    if(posX<50){
+                        posX=50;
+                        speedX*=-ENERGY_LOSS;
+                    }
+                    else if(posX>750){
+                        posX=750;
+                        speedX*=-ENERGY_LOSS;
+                    }
+                    
+                    
+                    if(posY<50){
+                        posY=50;
+                        speedY*=-1;
+                    }
+                    if(posY<550-GRAVITY){
+                        speedY+=GRAVITY;
+                    }
+                    
+                    else{   //球很貼近地面的時候
+                        posY=550;
+                        speedY*=-ENERGY_LOSS;
+                        if(speedY-0<(GRAVITY+0.01) && speedY-0>((-1*GRAVITY)-0.01)){
+                            speedY=0;
+                        }
+                    }
+                }
+                else{
+                    speedY=0;
+                }
+            }
+
+            function update(){
+                ctx.clearRect(0,0,800,600);
+                lastPosX=posX;
+                lastPosY=posY;
+                ballDrop();
+                drawBall();
+            }
+
+            function mouseDown(e){
+                if(e.buttons==1){   //避免按下右鍵執行
+                    lastPosX=e.clientX;
+                    lastPosY=e.clientY;
+                    speedY=0;
+                    speedX=0;
+
+                    isMouseDown=1;
+                    posX=e.clientX;
+                    posY=e.clientY;
+                    openAlert=false;
+                }
+            }
+
+            function mouseUp(e){
+                if(isMouseDown==1){ //避免右鍵放開
+                    isMouseDown=0;
+                    speedX=e.clientX-lastPosX;
+                    speedY=e.clientY-lastPosY;
+                }
+            }
+
+            function mouseOut(e){
+                if(isMouseDown==1){
+                    isMouseDown=0;
+                    speedX=e.clientX-lastPosX;
+                    speedY=e.clientY-lastPosY;
+                }
+            }
+
+            function mouseMove(e){
+                if(e.buttons==1 && isMouseDown==1){
+                    isMouseDown=1;
+                    posX=e.clientX;
+                    posY=e.clientY;
+                }                
+            }
+
+        </script>
+    </head>
+    <body>
+        <canvas id="cvs" width="800" height="600" style="border:1px solid #000000"></canvas>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>佔滿剩餘寬度(float法)</title>
+  <style>
+    html,body { height: 100%; }
+    .container 
+    {
+      height: 80%;
+      width: 80%;
+      padding: 0px;
+    }
+    .container>div
+    { 
+      background-color: white; 
+      border: 1px solid purple;
+      padding: 6px;
+      height: 100%;
+    }
+    .col-left { 
+      float: left; 
+      width: 100px; 
+    }
+    .col-remaining { 
+      /* 利用overflow: hidden使其成為BFC */
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class='container'>
+    <div class='col-left'>
+        LEFT 100px Wide
+    </div>
+    <div class='col-left'>
+        LEFT 100px Wide
+    </div>
+    <div class='col-remaining'>
+        REMAINING
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>JavaScript5</title>
+        <script type="text/javascript">
+            function change(){
+                var emotionObj=document.getElementById("emotion");
+                emotionObj.innerHTML="bad";
+                emotionObj.style.color="red";
+                emotionObj.style.fontWeight="bold";
+                emotionObj.style.fontFamily="微軟正黑體";
+            }
+
+        </script>
+    </head>
+    <body>
+        <div>Today is a <span id="emotion">good</span> day.</div>
+        <button onclick="change()">Change</button>
+    </body>
+</html>

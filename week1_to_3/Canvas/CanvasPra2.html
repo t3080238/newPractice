@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Canvas2</title>
+        <script type="text/javascript">
+            var ctx, cvs;
+            window.onload=function(){
+                cvs=document.getElementById("cvs");
+                ctx=cvs.getContext("2d");
+
+                var img=new Image();
+                img.src="gon.png";
+                img.onload=function(){ //註冊load事件，圖片載入完成才做繪製
+                    ctx.drawImage(this, 0, 0,  cvs.width, cvs.height);
+                };
+            };
+
+            function invertColor(btn){
+                btn.innerHTML="顏色";
+                var pixels=ctx.getImageData(0, 0, cvs.width, cvs.height); //ImageData物件
+                btn.innerHTML="顏色2";
+                var data=pixels.data; //rgba(4 Byte)
+                btn.innerHTML="顏色3";
+                for(var i=0;i<data.length;i+=4){
+                    data[i]=255-data[i];
+                    data[i+1]=255-data[i+1];
+                    data[i+2]=255-data[i+2];
+                }
+                ctx.putImageData(pixels, 0, 0);   
+                btn.innerHTML="顏色4";   
+            }   
+
+        </script>
+    </head>
+    <body>
+        <div><button onclick="invertColor(this);">顏色反轉</button></div>
+        <canvas id="cvs" width="800" height="600" style="border:1px solid #000000"></canvas>
+    </body>
+</html>

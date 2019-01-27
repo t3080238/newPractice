@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Canvas</title>
+        <script type="text/javascript">
+            window.onload=function(){
+                var cvs=document.getElementById("cvs");
+                var ctx=cvs.getContext("2d");
+
+  
+                /*
+                //Stroke 描邊
+                ctx.globalAlpha=1;
+                ctx.strokeStyle="blue";
+                ctx.strokeRect(400,50,50,100);
+
+                //Path路徑
+                ctx.beginPath();
+                ctx.moveTo(200, 100);
+                ctx.lineTo(300, 300);
+                ctx.lineTo(250,400);
+                ctx.closePath();             
+                ctx.stroke();
+                ctx.fill();
+                
+                ctx.beginPath();
+
+                ctx.arc(400, 300, 50, 10, 180);
+                ctx.fill();
+                ctx.stroke();*/
+                
+                /*ctx.beginPath();
+                ctx.moveTo(300,300);
+                ctx.lineTo(400,350);
+                ctx.lineTo(250,400);
+                ctx.closePath();
+                ctx.fill();*/
+
+                //var colorObj=ctx.createLinearGradient(0,0,100,0) //創建線性漸變
+
+                ctx.shadowColor="rgb(0,0,0)";
+                ctx.shadowOffsetX=3;
+                ctx.shadowOffsetY=3;
+                ctx.shadowBlur=5;
+
+                ctx.fillStyle=colorObj;
+                ctx.fillRect(50,50,200,100);//x,y,w,h
+
+
+                var colorObj=ctx.createRadialGradient(50,50,100,50,50,200); //創建放射性漸變 圓1座標,半徑,圓2座標,半徑
+                colorObj.addColorStop(0,"red");
+                colorObj.addColorStop(0.5,"blue");
+                colorObj.addColorStop(1,"green");
+
+                ctx.fillStyle=colorObj;
+                ctx.fillRect(50,50,200,100);//x,y,w,h
+
+
+                //ctx.fillRect(50,50,200,100);//x,y,w,h
+                //Fill 填滿
+                
+                //ctx.globalAlpha=0.5;
+              
+
+                
+
+
+
+            };
+        </script>
+    </head>
+    <body>
+        <canvas id="cvs" width="800" height="600"></canvas>
+    </body>
+</html>

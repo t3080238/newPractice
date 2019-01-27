@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>事件處理器</title>
+        <script type="text/javascript">
+            function init(){
+                var btn=document.getElementById("btn");
+                /*btn.onclick=function(){
+                    alert("123");
+                }*/
+                var handler=function(e){
+                    alert(e.clientX+","+e.clientY);
+                }
+                btn.addEventListener("click"/*事件名稱*/, handler);
+                document.addEventListener("keydown", function(e){
+                    alert(e.keyCode);
+                });
+            }
+        </script>
+    </head>
+    <body onload="init();">
+        <button id="btn">click</button>   
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>JS動態放大縮小</title>
+        <script type="text/javascript">
+            function show(){
+                var box=document.getElementById("box");
+                var styles=window.getComputedStyle(box);
+                var size_width=styles.getPropertyValue("width");    //return "50px";
+                size_width="50px";
+                size_width=parseInt(size_width);
+                //產生放大的動畫特效
+                var animeId=window.setInterval(function(){
+                    if(size_width>=200){
+                        window.clearInterval(animeId);
+                        return;
+                    }
+                    size_width++;
+                    box.style.width=size_width+"px";
+                    box.style.height=size_width+"px";
+                }, 5)
+            }
+            $('.box')
+        </script>
+        <style type="text/css">
+            .box{
+                width: 50px;
+                height: 50px;
+                background-color: red;
+                position: fixed;
+                top: 0;
+                right: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box" id="box" onclick="show();"></div>
+    </body>
+</html>

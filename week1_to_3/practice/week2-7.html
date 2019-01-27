@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>彩池設定</title>
+        <style type="text/css">
+            body{
+                font-family: 微軟正黑體;
+                margin:0px;
+            }
+
+            .all{
+                position:absolute;
+                padding: 0px;
+                margin: 0px;
+                width:100%;
+                height: 100%;
+            }
+
+            .menu{
+                float: left;
+                width: 200px;
+                height:100%;
+                background-color: rgb(47,65,86);
+                color:rgb(164,176,189);
+                margin: 0px;
+            }
+            
+            .content{
+                overflow: hidden;
+                max-width: 1300px;
+            }
+
+            .form{
+                /*position: absolute;*/
+            }
+
+            ul{
+                margin:0;
+                padding:0;
+                list-style: none;
+            }
+
+            ul.drop_down_menu li{
+                /*position: relative;*/
+                white-space: nowrap;/*文字不換行*/
+            }
+
+            ul.drop_down_menu a {
+                color:rgb(164,176,189);
+                display: block;
+                padding: 0px;
+                text-decoration: none;
+                line-height: 50px;
+                text-align: center;
+            }
+
+            ul.drop_down_menu li ul{
+                background-color: rgb(29, 45, 60);
+            }
+
+            ul.drop_down_menu li:hover> a{
+                color:rgb(60, 148, 238);
+            } 
+
+            ul.drop_down_menu li:hover> ul{
+                color:rgb(60, 148, 238);
+
+                display: block;
+
+            }    
+
+            .path{
+                padding: 5px;
+            }
+
+            .title{
+                background-color: rgb(237, 243, 249);
+                font-weight: bolder;
+                color:rgb(44,62,81);
+                padding: 10px;
+
+            }         
+
+            .input{
+                background-color: rgb(223,235,249);
+                padding: 10px;
+                font-size: 10px;
+                font-weight: bolder;
+                color: rgb(145, 145, 148);
+            }
+            
+            .each_input{
+                display: inline-block;
+                /*float: left;*/
+                /*clear: both;*/
+            } 
+
+            select{
+                padding: 5px;
+                padding-left: 8px;
+                border: 1px solid rgb(239,241,247);
+                width: 150px;
+                font-family: 微軟正黑體;
+                font-size: 10px;
+                margin: 5px;
+                margin-right: 10px;
+                border-radius: 4px;
+                color: rgb(106, 108, 113);
+            }
+            /*.clerrfix{
+                overflow: auto;
+            }*/
+            .clearfix::before {
+                content: "";
+                display: table;
+            }
+
+            .clearfix::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            #new_pool{
+                float:right;
+                /*display: inline-block;*/
+                margin:15px 5px 0px 1px;
+                clear: both;
+            }
+
+            @media screen and (max-width:977px){
+                .menu{
+                    display:none;       
+                }
+
+                .content{
+                    width: 100%;
+                    margin: 0px;
+                }
+
+                /*.form{
+                    position: absolute;
+                    top:150px;
+                }*/
+
+     
+            }
+
+            @media screen and (max-width:814px){
+                /*.form{
+                    position: absolute;
+                    top:200px;
+                }*/
+            }
+
+            @media screen and (max-width:600px){
+                .each_input{
+                    display: block;
+                }
+                #new_pool{
+                    display: none;
+                }
+                /*.form{
+                    position: absolute;
+                    top:250px;
+                }*/
+            }
+
+            #name{
+                margin: 0px;
+                border-radius: 0px;
+                background-color: rgb(239,241,247);
+                font-size: 9px;
+                color: rgb(106, 108, 113);
+            }
+
+            #name2{
+                margin: 0px;
+                border-radius: 0px;
+                padding:5px;
+            }
+
+            button{
+                background-color: rgb(63, 158, 255);
+                border:0px;
+                padding: 6px 12px 6px 12px;
+                border-radius: 5px;
+                font-family: 微軟正黑體;
+                font-size: 10px;
+                color: white;
+            }
+
+            .input tr{
+                background-color: gray;
+            }
+
+            .content table{
+                text-align: center;
+                border-collapse: collapse;
+                font-size: 10px;
+                width: 98%;
+                margin: 10px;
+                color: rgb(145, 145, 148)
+
+            }
+
+            th{
+                background-color: rgb(249,251,254);
+                border: 1px solid rgb(239,241,247);
+                padding: 10px;
+            }
+
+            td{
+                border: 1px solid rgb(239,241,247);
+                padding: 10px;
+
+            }
+
+            .box{
+                height: 22px;
+                width: 22px;
+                margin-left:auto;
+                margin-right:auto;
+                border-radius: 5px;
+                line-height: 22px;
+            }
+            #A{
+                border: 1px solid rgb(102,71,160);
+                color:rgb(102,71,160);
+                background-color: rgb(235, 230, 242);
+            }
+            #B{
+                border: 1px solid rgb(49,155,237);
+                color:rgb(49,155,237);
+                background-color: rgb(227, 242, 253);
+            }
+            #C{
+                border: 1px solid rgb(218,118,119);
+                color:rgb(218,118,119);
+                background-color: rgb(250, 236, 236);
+            }
+            #D{
+                border: 1px solid rgb(139,172,61);
+                color:rgb(139,172,61);
+                background-color: rgb(239, 243, 229);
+            }
+            #G{
+                border: 1px solid rgb(219,136,26);
+                color:rgb(219,136,26);
+                background-color: rgb(249, 237, 224);       
+            }
+
+        </style>
+    </head>   
+    <body><div class="all">
+        <div class="menu">
+            <ul class="drop_down_menu">
+                <li><a href="#">首頁</a></li>
+                <li><a href="#">帳號管理</a>
+                    <ul>
+                        <li><a href="#">合作商列表</a></li>
+                        <li><a href="#">帳號列表</a></li>
+                    </ul>                 
+                </li>
+                <li><a href="#">彩金管理</a>
+                    <ul>
+                        <li><a href="#">彩池設定</a></li>
+                        <li><a href="#">遊戲綁定查詢</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">現金系統</a></li>
+                <li><a href="#">各式報表</a></li>
+                <li><a href="#">管理者系統</a>
+                    <ul>
+                        <li><a href="#">管理者帳號</a></li>
+                        <li><a href="#">登入紀錄</a></li>
+                        <li><a href="#">遊戲管理</a></li>
+                        <li><a href="#">現金交易類別</a></li>
+                        <li><a href="#">幣別管理</a></li>
+                        <li><a href="#">人工存提</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="header">
+                <div class="path"><button id="menu_button">|||</button>控端系統</div>
+            </div>
+            <div class="roll">
+                <div class="title">彩池設定</div>
+                <div class="input clearfix">
+                    <div class="each_input">
+                        彩金種類 
+                        <select name="type">
+                            <option value="all">全部</option>
+                            <option value="1">1</option>
+                        </select>              
+                    </div>
+                    <div class="each_input">
+                        狀態 
+                        <select name="status">
+                            <option value="all">全部</option>
+                            <option value="1">1</option>
+                        </select> 
+                    </div>
+                    <div class="each_input">
+                        <select id="name" name="name" style="float:left">
+                            <option value="all">彩池名稱</option>
+                            <option value="1">1</option>
+                        </select>
+                        <input id="name2" type="text" name="search_name" size=15  placeholder="請輸入搜尋內容" style="font-family: 微軟正黑體; float:left">
+                        <input type="checkbox" name="blurry" size=15 value="模糊">模糊
+                    </div>
+                    
+                    <div class="each_input" style="margin:15px 5px 0px 0px; ;"><button>搜尋</button></div>
+                    
+                    <div class="each_input" id="new_pool"><button>新增彩池</button></div>
+                </div>
+                
+                <div class="form"><p>
+                    <table id="main_table">
+                        <tr>
+                            <th>彩池名稱</th>
+                            <th>彩金種類</th>
+                            <th>累積條件</th>
+                            <th>彩金過線金額</th>
+                            <th>會員有效投注期限</th>
+                            <th>彩金上限</th>
+                            <th>開獎機率</th>
+                            <th>彩金發放時段限制</th>
+                            <th>狀態</th>
+                            <th>操作</th>
+                        </tr>
+                        <tr>
+                            <td><div class="names">測試彩池A</div></td>
+                            <td><div class="type"><div class="box" id="A">A</div></div></td>
+                            <td><div class="conditions">12%</div></td>
+                            <td><div class="money">123,456</div></td>
+                            <td><div class="limit">22,222</div></td>
+                            <td><div class="maximum">123,345,567</div></td>
+                            <td><div class="probability">30%</div></td>
+                            <td><div class="time">08:00~16:00</div></td>
+                            <td><div class="status"></div></td>
+                            <td><div class="operate"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="names">測試彩池B</div></td>
+                            <td><div class="type"><div class="box" id="B">B</div></div></td>
+                            <td><div class="conditions">22%</div></td>
+                            <td><div class="money">123,123</div></td>
+                            <td><div class="limit">1,111</div></td>
+                            <td><div class="maximum">123,123</div></td>
+                            <td><div class="probability">11%</div></td>
+                            <td><div class="time">不限制</div></td>
+                            <td><div class="status"></div></td>
+                            <td><div class="operate"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="names">測試彩池C</div></td>
+                            <td><div class="type"><div class="box" id="C">C</div></div></td>
+                            <td><div class="conditions">10%</div></td>
+                            <td><div class="money">123,123</div></td>
+                            <td><div class="limit">1,231,231,231</div></td>
+                            <td><div class="maximum">123,123,123</div></td>
+                            <td><div class="probability">40%</div></td>
+                            <td><div class="time">不限制</div></td>
+                            <td><div class="status"></div></td>
+                            <td><div class="operate"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="names">測試彩池D</div></td>
+                            <td><div class="type"><div class="box" id="D">D</div></div></td>
+                            <td><div class="conditions">12%</div></td>
+                            <td><div class="money">1,234,567</div></td>
+                            <td><div class="limit">123,456,789</div></td>
+                            <td><div class="maximum">2,147,483,647</div></td>
+                            <td><div class="probability">10%</div></td>
+                            <td><div class="time">不限制</div></td>
+                            <td><div class="status"></div></td>
+                            <td><div class="operate"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="names">測試彩池G</div></td>
+                            <td><div class="type"><div class="box" id="G">G</div></div></td>
+                            <td><div class="conditions">22%</div></td>
+                            <td><div class="money">2,147,483,647</div></td>
+                            <td><div class="limit">3,333,333</div></td>
+                            <td><div class="maximum">2,147,483,647</div></td>
+                            <td><div class="probability">22%</div></td>
+                            <td><div class="time">不限制</div></td>
+                            <td><div class="status"></div></td>
+                            <td><div class="operate"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="names">G3</div></td>
+                            <td><div class="type"><div class="box" id="G">G</div></div></td>
+                            <td><div class="conditions">12.12%</div></td>
+                            <td><div class="money">123,123</div></td>
+                            <td><div class="limit">123,123</div></td>
+                            <td><div class="maximum">123,123</div></td>
+                            <td><div class="probability">11.1%</div></td>
+                            <td><div class="time">不限制</div></td>
+                            <td><div class="status"></div></td>
+                            <td><div class="operate"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="names">G4</div></td>
+                            <td><div class="type"><div class="box" id="G">G</div></div></td>
+                            <td><div class="conditions">22%</div></td>
+                            <td><div class="money">100,000</div></td>
+                            <td><div class="limit">123,123</div></td>
+                            <td><div class="maximum">123,123</div></td>
+                            <td><div class="probability">11%</div></td>
+                            <td><div class="time">不限制</div></td>
+                            <td><div class="status"></div></td>
+                            <td><div class="operate"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="names">G</div></td>
+                            <td><div class="type"><div class="box" id="G">G</div></div></td>
+                            <td><div class="conditions">22%</div></td>
+                            <td><div class="money">123,123</div></td>
+                            <td><div class="limit">123,123</div></td>
+                            <td><div class="maximum">123,123</div></td>
+                            <td><div class="probability">11%</div></td>
+                            <td><div class="time">不限制</div></td>
+                            <td><div class="status"></div></td>
+                            <td><div class="operate"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="names">sssss</div></td>
+                            <td><div class="type"><div class="box" id="G">G</div></div></td>
+                            <td><div class="conditions">1%</div></td>
+                            <td><div class="money">1,111</div></td>
+                            <td><div class="limit">1,111</div></td>
+                            <td><div class="maximum">1,111</div></td>
+                            <td><div class="probability">1%</div></td>
+                            <td><div class="time">不限制</div></td>
+                            <td><div class="status"></div></td>
+                            <td><div class="operate"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="names">gggggg</div></td>
+                            <td><div class="type"><div class="box" id="G">G</div></div></td>
+                            <td><div class="conditions">12%</div></td>
+                            <td><div class="money">10,000</div></td>
+                            <td><div class="limit">11,111</div></td>
+                            <td><div class="maximum">11,111</div></td>
+                            <td><div class="probability">10%</div></td>
+                            <td><div class="time">08:00~09:00</div></td>
+                            <td><div class="status"></div></td>
+                            <td><div class="operate"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="names">艾咪RR電子</div></td>
+                            <td><div class="type"><div class="box" id="A">A</div></div></td>
+                            <td><div class="conditions">3%</div></td>
+                            <td><div class="money">5</div></td>
+                            <td><div class="limit">500</div></td>
+                            <td><div class="maximum">100</div></td>
+                            <td><div class="probability">50%</div></td>
+                            <td><div class="time">不限制</div></td>
+                            <td><div class="status"></div></td>
+                            <td><div class="operate"></div></td>
+                        </tr>
+                    </table>
+                </p></div>
+            </div>
+        </div>
+    </div></body>
+</html>

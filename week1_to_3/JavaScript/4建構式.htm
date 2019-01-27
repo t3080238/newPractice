@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>建構式</title>
+        <script type="text/javascript">
+            function Player(name, hp){
+                this.name=name;
+                this.hp=hp;
+                this.fight=function(){
+                    this.hp-=2;
+                }
+                this.rest=function(){
+                    this.hp++;
+                }
+                this.report=function(){
+                    alert(this.name+"hp:"+this.hp);
+                }
+            }
+            var player1=new Player("Kent", 99999);
+            player1.fight();
+            player1.report();
+            var player2=new Player("Andy", 100);
+            player2.rest();
+            player2.report();
+
+        </script>
+    </head>
+    <body>
+    
+    </body>
+</html>

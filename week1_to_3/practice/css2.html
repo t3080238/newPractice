@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"></meta>
+    <title>CSS練習2</title>
+    <script src=""></script>
+    <style>
+        /*標籤名稱選擇器*/
+        body{font-size: 16px;font:"微軟正黑體"}
+        h3{font-size: 24px;text-decoration: underline}
+        /*class選擇器*/
+        .content{padding:10px;border:1px dashed #888888;}
+        /*ID選擇器*/
+        #btn{
+            border:1px solid #888888;
+            background-color:#ffffff;
+            padding:5px;
+        }
+        #pid{
+            font-size: 50px;
+        }
+        /*虛擬選擇器：搭配其他選擇器使用
+        1. hover
+        2. focus*/
+        #btn:hover{
+            background-color: #888888;
+        }
+        input:focus{
+            background-color: blue;
+            border:2px solid red;
+        }
+        /*階層式選擇器：搭配其他選擇器使用*/
+        .favorite a{
+            color:saddlebrown;
+        }
+        .demo a{
+            color:rgb(19, 139, 29);
+        }
+    </style>    
+</head>
+<body>
+    <h3>我的自我介紹</h3>
+    <div class="content">
+        大家好，我是Kent
+    </div>
+    <h3>我的最愛連結</h3>
+    <ul class="favorite">
+        <li><a href="https://www.google.com/">Google</a></li>
+        <li><a href="https://zh-tw.facebook.com/">Facebook</a></li>
+    </ul>
+    <h3>我的作品</h3>
+    <ul class="demo">
+        <li><a href="https://youtu.be/lj55S3dfxvU">熔岩戰記</a></li>
+    </ul>
+    <h3>和我聯絡</h3>
+    <div class="content">
+        填寫訊息 <input type="text" /> <button id ="btn">送出</button>
+    </div>
+    <p id="pid">這是ID</p>
+</body>    
+</html>

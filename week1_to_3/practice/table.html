@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>CCS表格樣式</title>
+<style>
+table{
+    width: 500px;
+    border-collapse: collapse;
+}
+
+td{
+    border-bottom:1px solid gray; padding: 10px;
+}
+/*表格中的奇數對*/
+tr:nth-child(odd){
+    background-color: #80ace6
+}
+/*表格中的第一對*/
+tr:first-child{
+    background-color: #7788aa;
+    color: #ffffff;
+}
+/*表格中的偶數對*/
+tr:nth-child(even){
+    background-color: #e8e8e8
+}
+#table2 tr:nth-child(3n){
+    background-color: #aaa577;
+}
+#table2 tr:nth-child(3n+1){
+    background-color: #e6a080
+}
+#table2 tr:nth-child(3n+2){
+    background-color: #e4e265
+}
+</style>
+</head>
+<body>
+    <table width="100" border="1">
+        <tr>
+            <td>球隊</td>
+            <td>勝</td>
+            <td>敗</td>
+        </tr>
+        <tr>
+            <td>紐約洋基</td>
+            <td>10</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>波士頓紅襪</td>
+            <td>9</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>多倫多藍鳥</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <hr/>
+    <table width="100" border="1" id="table2">
+            <tr>
+                <td>球隊</td>
+                <td>勝</td>
+                <td>敗</td>
+            </tr>
+            <tr>
+                <td>紐約洋基</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>波士頓紅襪</td>
+                <td>9</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>多倫多藍鳥</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>球隊</td>
+                <td>勝</td>
+                <td>敗</td>
+            </tr>
+            <tr>
+                <td>紐約洋基</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>波士頓紅襪</td>
+                <td>9</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>多倫多藍鳥</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>        
+        </table>
+</body>
+</html>
